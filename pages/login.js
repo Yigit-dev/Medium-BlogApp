@@ -1,0 +1,16 @@
+import Layout from '../components/Layout/Layout'
+import Head from 'next/head'
+import Login from '../components/Login/Login'
+
+const LoginPage = () => {
+  return (
+    <Layout>
+      <Head>
+        <title>Login</title>
+      </Head>
+      <Login />
+    </Layout>
+  )
+}
+
+export default LoginPage

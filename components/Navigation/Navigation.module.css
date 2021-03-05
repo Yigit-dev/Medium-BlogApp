@@ -1,0 +1,18 @@
+.Navigation {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a{
+    font-size: 20px;
+    margin-right: 20px;
+    transition: 120ms all;
+    padding: 12px;
+    border-radius: 12px;
+    &:hover{
+      color: #299bf2;
+      background-color: #222;
+    }
+  }
+  border-bottom: 1px solid #ccc;
+}
