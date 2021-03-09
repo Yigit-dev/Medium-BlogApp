@@ -13,11 +13,21 @@
 
 ## TODO
 
+### 1
+
 - [x] Login & Logout 
 
 - [x] Private Route
 
 - [x] Firebase Config .env.local
+
+### 2
+
+- [x] Authentication & State bug fixes
+
+- [x] Create Blog
+
+- [x] List Blog
 
   ...
 

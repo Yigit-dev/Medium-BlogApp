@@ -1,17 +1,11 @@
-import {login,loginAction,logoutAction} from '../../actions/auth'
-import {firebase} from '../../firebase/firebaseConfig'
-import {connect} from 'react-redux'
+import {login} from '../../actions/auth'
 import {useRouter} from 'next/router'
 import styles from './Login.module.css'
 
-const Login = ({dispatch}) => {
-  
-  firebase.auth().onAuthStateChanged(user => {
-    user ? dispatch(loginAction(user.uid)) : dispatch(logoutAction())
-  })
+const Login = () => {
 
   const router = useRouter()
-  
+
   return (
     <div className={styles.Login}>
       <h1>Login</h1>
@@ -21,6 +15,6 @@ const Login = ({dispatch}) => {
   )
 }
 
-export default connect()(Login)
+export default Login
 
 
