@@ -29,7 +29,14 @@
 
 - [x] List Blog
 
-  ...
+### 3
+
+- [x] Blog Form
+- [x] Edit Blog 
+- [x] Remove Blog
+- [x] Slug
+
+...
 
 ---
 

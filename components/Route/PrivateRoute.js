@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useEffect } from "react";
+import { useEffect } from "react"
 
 const PrivateRoute = Component => {
 
@@ -21,4 +21,4 @@ const PrivateRoute = Component => {
   return Auth
 }
 
-export default PrivateRoute;
+export default PrivateRoute

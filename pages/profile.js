@@ -2,8 +2,9 @@ import { connect } from 'react-redux'
 import PrivateRoute from '../components/Route/PrivateRoute'
 import Layout from '../components/Layout/Layout'
 import Head from 'next/head'
+import ListBlog from '../components/Blogs/ListBlog/ListBlog'
 
-const ProfilePage = ({isAuthenticated,myBlogs}) => {
+const ProfilePage = ({isAuthenticated}) => {
   const render = (
     <Layout>
       <Head>
@@ -11,11 +12,7 @@ const ProfilePage = ({isAuthenticated,myBlogs}) => {
       </Head>
       <h1>Profile</h1>
       <h2>My Blog</h2>
-      {
-        myBlogs.map(blog => (
-          <li key={blog.id}>{blog.title}</li>
-        ))
-      }
+      <ListBlog />
 
     </Layout>
   )
@@ -24,9 +21,7 @@ const ProfilePage = ({isAuthenticated,myBlogs}) => {
 }
 
 const mapStateToProps = state => ({ 
-  isAuthenticated: !!state.auth.uid,
-  myBlogs: state.blogs
-
+  isAuthenticated: !!state.auth.uid
 })
 
 export default connect(mapStateToProps)(PrivateRoute(ProfilePage))

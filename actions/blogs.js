@@ -7,11 +7,9 @@ export const addBlog = (blog) => ({
   type: 'ADD_BLOG',
   blog
 })
-
 // ADD BLOG FOR DATABASE THEN ADD BLOG
 export const addBlogToDatabase = (blogData = {}) => {
   return (dispatch,getState) => {
-    
     const uid = getState().auth.uid
     database.ref('blogs').push({uid,...blogData})
     .then(response => {
@@ -21,8 +19,38 @@ export const addBlogToDatabase = (blogData = {}) => {
         ...blogData
       }))
     })
-
   }
+}
+
+// REMOVE BLOG FOR REDUCER
+export const removeBlog = (id) => ({
+  type: 'REMOVE_BLOG',
+  id
+})
+// REMOVE BLOG FOR DATABASE THEN REDUCER
+export const removeBlogFromDatabase = (id) => {
+  return (dispatch) => {
+    return database.ref(`blogs/${id}`).remove()
+      .then(() => {
+        dispatch(removeBlog(id))
+      })
+  }
+}
+
+// EDIT BLOG FOR REDUCER
+export const editBlog = (id,updates) => ({
+  type: 'EDIT_BLOG',
+  id,
+  updates
+})
+// EDIT BLOG FOR DATABASE
+export const editBlogFromDatabase = (id,updates = {}) => {
+  return dispatch => (
+    database.ref(`profiles/${id}`).update(updates)
+      .then(() => {
+        dispatch(editBlog(id,updates))
+      })
+  )
 }
 
 // LIST BLOG FOR REDUCER

@@ -1,17 +1,25 @@
-import { addBlogToDatabase } from "../../../actions/blogs"
+// AddBlog & EditBlog Form...
+import { addBlogToDatabase, editBlogFromDatabase } from "../../../actions/blogs"
 import { connect } from 'react-redux'
 import { useState } from "react"
+import { useRouter } from 'next/router'
 
-const BlogForm = ({dispatch}) => {
-
-  const [title,setTitle] = useState('')
-  const [body,setBody]   = useState('')
-
+const BlogForm = ({dispatch,blog}) => {
+  const [title,setTitle] = useState(blog ? blog.title : '')
+  const [body,setBody]   = useState(blog ? blog.body : '')
+  const router = useRouter()
+  
   const onSubmit = e => {
     e.preventDefault()
-    dispatch(addBlogToDatabase({title,body}))
+    if(!!blog) {
+      dispatch(editBlogFromDatabase(blog.id,{title,body}))
+      router.push('/profile')
+    } else {
+      dispatch(addBlogToDatabase({title,body}))
+      router.push('/profile')
+    }
   }
-  
+
   return (
     <div>
       <form onSubmit={onSubmit}>
