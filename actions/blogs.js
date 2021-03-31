@@ -46,7 +46,7 @@ export const editBlog = (id,updates) => ({
 // EDIT BLOG FOR DATABASE
 export const editBlogFromDatabase = (id,updates = {}) => {
   return dispatch => (
-    database.ref(`profiles/${id}`).update(updates)
+    database.ref(`blogs/${id}`).update(updates)
       .then(() => {
         dispatch(editBlog(id,updates))
       })
@@ -77,5 +77,30 @@ export const listBlogFromDatabase = () => {
         })
         dispatch(listBlog(blogs))
       })
+  }
+}
+
+// PUBLIC LIST BLOG FOR REDUCER
+export const publicBlog = blogs => ({
+  type: 'PUBLIC_BLOG',
+  blogs
+})
+
+// PUBLIC LIST BLOG FOR DATABASE
+export const publicBlogFromDatabase = () => {
+  return (dispatch) => {
+    return database.ref('blogs').once('value', snapshot => {
+      const blogs = []
+      snapshot.forEach(blog => {
+        const result = blog.val()
+        if(result.privatePost === false){
+          blogs.push({
+            id: blog.key,
+            ...result
+          })
+        }
+      })
+      dispatch(publicBlog(blogs))
+    })
   }
 }

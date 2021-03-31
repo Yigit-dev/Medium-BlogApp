@@ -19,9 +19,7 @@ const EditBlog = ({blog,dispatch}) => {
 }
 
 const mapStateToProps = (state,{id}) => ({
-  blog: state.blogs.find(blog => {
-    return blog.id === id
-  })
+  blog: state.blogs.find(blog => blog.id === id)
 })
 
 export default connect(mapStateToProps)(EditBlog)

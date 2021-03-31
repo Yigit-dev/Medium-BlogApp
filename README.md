@@ -36,6 +36,13 @@
 - [x] Remove Blog
 - [x] Slug
 
+### 4
+
+- [x] Public & Private Posts
+- [x] Category
+- [x] Timeline
+- [x] Post Date
+
 ...
 
 ---

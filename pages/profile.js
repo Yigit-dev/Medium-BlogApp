@@ -13,10 +13,8 @@ const ProfilePage = ({isAuthenticated}) => {
       <h1>Profile</h1>
       <h2>My Blog</h2>
       <ListBlog />
-
     </Layout>
   )
-  
   return isAuthenticated ? render : null
 }
 

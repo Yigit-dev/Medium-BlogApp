@@ -1,3 +1,5 @@
+import Layout from '../../../components/Layout/Layout'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { connect } from 'react-redux'
 import EditBlog from '../../../components/Blogs/EditBlog/EditBlog'
@@ -7,9 +9,13 @@ const EditBlogPage = ({isAuthenticated}) => {
   const router = useRouter()
   const id = router.query.id
   const render = (
-    <>
+    <Layout>
+      <Head>
+        <title>Edit</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <EditBlog id={id}/>
-    </>
+    </Layout>
   )
   return isAuthenticated ? render : null
 }
